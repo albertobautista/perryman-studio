@@ -1,5 +1,6 @@
 import { Hero } from "./sections/Hero";
 import { ImageCarousel } from "./sections/ImageCarousel";
+import { Projects } from "./sections/Projects";
 import { Services } from "./sections/Services";
 
 const images = [
@@ -27,6 +28,7 @@ export default function Home() {
       <Hero />
       <Services />
       <ImageCarousel images={images} loop height={400} gap={24} radius="5px" />
+      <Projects />
     </main>
   );
 }
