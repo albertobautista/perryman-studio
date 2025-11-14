@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Footer } from "./sections/Footer";
 
 export const metadata: Metadata = {
   title: "Perryman Studio",
@@ -12,8 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">{children}</body>
+    <html lang="es">
+      <body className="antialiased bg-red">{children}</body>
+      <footer>
+        <Footer />
+      </footer>
     </html>
   );
 }

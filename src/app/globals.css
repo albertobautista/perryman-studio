@@ -25,3 +25,7 @@
   --font-neue:'Neue Montreal', system-ui;
   --font-sloop: 'Sloop Script Pro', cursive;
 }
+
+.input-footer {
+  @apply w-full border-b border-gray-300 pb-3 text-gray-700 focus:outline-none;
+}
