@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Footer } from "./sections/Footer";
+import { Preloader } from "./components/general/Preloader";
 
 export const metadata: Metadata = {
   title: "Perryman Studio",
@@ -14,10 +15,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className="antialiased bg-red">{children}</body>
-      <footer>
-        <Footer />
-      </footer>
+      <body className="antialiased bg-red">
+        <Preloader
+          logoSrc="/images/home/cherry.png"
+          bgColor="bg-beige"
+          totalMs={1200}
+        />
+
+        {children}
+
+        <footer>
+          <Footer />
+        </footer>
+      </body>
     </html>
   );
 }
