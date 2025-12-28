@@ -24,7 +24,7 @@ export default function Preloader({
     const t = window.setTimeout(() => {
       setDone(true);
       document.body.style.overflow = "";
-    }, totalMs);
+    }, totalMs + 500); // Añado 800ms para que la imagen se quede en el centro antes de desaparecer
 
     return () => {
       window.clearTimeout(t);
@@ -50,10 +50,9 @@ export default function Preloader({
               initial={{ x: "-60vw", rotate: 0, opacity: 1, scale: 1 }}
               animate={{
                 x: 0,
-                rotate: 720, // 2 vueltas completas mientras llega al centro
+                rotate: 720,
               }}
               transition={{
-                // x y rotate sincronizados como "rueda"
                 duration: 1.5,
                 ease: [0.22, 1, 0.36, 1],
                 delay: 0.15,

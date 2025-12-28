@@ -1,29 +1,18 @@
 "use client";
 
 type ServiceCategoryTitleProps = {
-  pill?: string; // ej: "BRAND"
   title: string; // ej: "STRATEGY"
 };
 
 export default function ServiceCategoryTitle({
-  pill,
   title,
 }: ServiceCategoryTitleProps) {
   return (
     <section className="w-full">
-      <div className="px-6 md:px-12 py-20 md:py-28">
+      <div className="px-4 sm:px-6 md:px-12">
         <div className="flex flex-col items-center justify-center text-center">
-          {/* Pill */}
-          {pill && (
-            <div className="inline-flex items-center justify-center rounded-full bg-beige px-5 py-2">
-              <span className="uppercase text-white text-[12px] md:text-[13px] tracking-[0.12em]">
-                {pill}
-              </span>
-            </div>
-          )}
-
           {/* Title */}
-          <h2 className="mt-6 uppercase font-sans tracking-tight leading-[0.9] text-beige text-[18vw] md:text-[10vw]">
+          <h2 className="mt-4 sm:mt-6 md:mt-8 uppercase font-neue tracking-tight leading-[0.85] sm:leading-[0.88] md:leading-[0.9] text-brown text-[14vw] sm:text-[16vw] md:text-[8vw]">
             {title}
           </h2>
         </div>

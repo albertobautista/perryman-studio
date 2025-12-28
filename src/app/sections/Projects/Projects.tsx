@@ -58,7 +58,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section className="w-full mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-12">
+    <section className="w-full mx-auto max-w-8xl px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((project) => (
           <ProjectCard key={project.title} {...project} />

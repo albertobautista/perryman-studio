@@ -74,7 +74,7 @@ export default function ImageCarousel({
   if (loop) {
     const strip = [...images, ...images];
     return (
-      <section className="w-full mt-30 py-12 select-none">
+      <section className="w-full mt-20 py-12 select-none">
         <div
           className="relative overflow-hidden"
           style={{

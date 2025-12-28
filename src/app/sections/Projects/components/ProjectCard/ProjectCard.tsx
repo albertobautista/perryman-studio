@@ -3,6 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 type MediaImage = {
   type: "image";
@@ -39,15 +41,23 @@ export function ProjectCard({
   className = "",
 }: ProjectCardProps) {
   const [open, setOpen] = React.useState(false);
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
 
   // En mobile usamos click para abrir/cerrar; en desktop también funciona,
   // pero además se muestra al hacer hover gracias a Tailwind.
   const toggleOpen = () => setOpen((prev) => !prev);
 
   return (
-    <article
+    <motion.article
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={[
-        "relative overflow-hidden rounded-3xl bg-[#f3f0e8]",
+        "relative overflow-hidden rounded-3xl bg-brown",
         "shadow-sm hover:shadow-md transition-shadow",
         className,
       ].join(" ")}
@@ -88,7 +98,7 @@ export function ProjectCard({
             "pointer-events-none absolute inset-0",
             "flex flex-col items-center justify-between",
             "px-6 sm:px-8 py-8 sm:py-10",
-            "bg-beige text-black", // amarillo tipo ejemplo
+            "bg-brown text-beige", // amarillo tipo ejemplo
             "transition-opacity duration-300",
             // - En desktop: aparece con hover
             // - En mobile: usamos el estado `open`
@@ -120,7 +130,7 @@ export function ProjectCard({
             <div className="w-full flex justify-center">
               <Link
                 href={buttonHref}
-                className="pointer-events-auto font-neue inline-flex items-center justify-center rounded-full px-6 py-2 text-xs sm:text-sm font-medium bg-black text-white hover:bg-black/85 transition-colors"
+                className="pointer-events-auto font-neue inline-flex items-center justify-center rounded-full px-6 py-2 text-xs sm:text-sm font-medium bg-red text-white hover:bg-black/85 transition-colors"
               >
                 {buttonLabel}
               </Link>
@@ -128,6 +138,6 @@ export function ProjectCard({
           )}
         </div>
       </button>
-    </article>
+    </motion.article>
   );
 }

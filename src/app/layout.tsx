@@ -15,10 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className="antialiased bg-red">
+      <body className="antialiased bg-yellow">
         <Preloader
           logoSrc="/images/home/cherry.png"
-          bgColor="bg-beige"
+          bgColor="bg-brown"
           totalMs={1200}
         />
 

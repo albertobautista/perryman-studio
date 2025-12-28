@@ -1,4 +1,6 @@
 import { About } from "./components/home/About";
+import { CenteredBanner } from "./components/home/CenteredBanner";
+import { FullWidthMedia } from "./components/home/FullWidthMedia";
 import { Hero } from "./components/home/Hero";
 import { Process } from "./components/home/Process";
 import { ServiceCategoryTitle } from "./components/home/ServiceCategoryTitle";
@@ -30,13 +32,26 @@ const images = [
 
 export default function Home() {
   return (
-    <main className="relative flex flex-col max-w-8xl mx-auto px-6 lg:px-8 bg-red">
+    <main className="relative flex flex-col max-w-8xl mx-auto px-6 lg:px-8 bg-beige">
       <Hero imageA="/images/home/cherry.png" imageB="/images/home/cherry.png" />
-      {/* <Services /> */}
+      <FullWidthMedia
+        type="image"
+        src="/images/home/test.webp"
+        alt="Studio"
+        heightClassName="h-[50vh] md:h-[95vh]"
+        priority
+      />
       <About />
-      <StatementHero image="/images/home/cherry.png" />
+      <FullWidthMedia
+        type="image"
+        src="/images/home/postit.png"
+        alt="Studio"
+        heightClassName="h-[50vh] md:h-[100vh]"
+        priority
+      />
+      <CenteredBanner text="Where creativity has no boundaries" />
       <ServicesTitle />
-      <ServiceCategoryTitle pill="BRAND" title="STRATEGY" />
+      <ServiceCategoryTitle title="For Brands" />
       <ServicesAccordion
         items={[
           {
@@ -65,7 +80,6 @@ export default function Home() {
           },
         ]}
       />
-
       <ServiceCategoryTitle title="FOR CREATORS" />
       <ServicesAccordion
         items={[
@@ -82,6 +96,7 @@ export default function Home() {
             body: "En Perryman Studio, entendemos que asistir a Fashion Week no es solo una invitación: es una oportunidad estratégica para fortalecer tu posicionamiento, generar contenido de alto valor y conectar con la industria de la moda internacional. Este servicio ofrece un acompañamiento integral desde la planeación previa hasta el seguimiento post-evento para que cada aparición o colaboración se traduzca en visibilidad, crecimiento y relaciones duraderas.",
           },
         ]}
+        textColor="text-red/80"
       />
       <Process
         steps={[
@@ -107,7 +122,6 @@ export default function Home() {
           },
         ]}
       />
-
       <ImageCarousel images={images} loop height={400} gap={24} radius="5px" />
       <ServiceCategoryTitle title="Projects" />
 
