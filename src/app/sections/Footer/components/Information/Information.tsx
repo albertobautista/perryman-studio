@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FaInstagram, FaTiktok, FaSpotify, FaLinkedinIn } from "react-icons/fa";
+import SocialIcon from "./components/SocialIcon/SocialIcon";
 
 type InformationProps = {
   email: string;
@@ -65,39 +66,5 @@ export default function Information({ email, socials }: InformationProps) {
         </a>
       </div>
     </footer>
-  );
-}
-
-function SocialIcon({
-  href,
-  label,
-  icon,
-}: {
-  href?: string;
-  label: string;
-  icon: React.ReactNode;
-}) {
-  const base =
-    "flex items-center text-beige justify-center text-[44px] md:text-[52px] transition-opacity hover:opacity-75";
-
-  if (!href) {
-    return (
-      <div className={`${base} opacity-40`} aria-label={label}>
-        {icon}
-      </div>
-    );
-  }
-
-  return (
-    <Link
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={label}
-      title={label}
-      className={base}
-    >
-      {icon}
-    </Link>
   );
 }

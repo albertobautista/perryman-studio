@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Footer } from "./sections/Footer";
-import { Preloader } from "./components/general/Preloader";
+import ClientShell from "./components/general/ClientShell/ClientShell";
 
 export const metadata: Metadata = {
   title: "Perryman Studio",
@@ -16,13 +16,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className="antialiased bg-yellow">
-        <Preloader
-          logoSrc="/images/home/cherry.png"
-          bgColor="bg-brown"
-          totalMs={1200}
-        />
-
-        {children}
+        <ClientShell>{children}</ClientShell>
 
         <footer>
           <Footer />

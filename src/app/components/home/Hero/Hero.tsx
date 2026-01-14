@@ -13,9 +13,9 @@ export default function Hero({ imageA, imageB }: HeroProps) {
 
   return (
     <section className="relative w-full overflow-hidden">
-      <div className="relative text-brown font-neue z-20 w-full px-4 sm:px-6 md:px-12 pt-6 sm:pt-20 md:pt-32 pb-6 sm:pb-8 md:pb-12">
+      <div className="relative text-brown font-neue z-20 w-full pt-6 sm:pt-20 md:pt-32 pb-6 sm:pb-8 md:pb-12">
         {/* MOBILE LAYOUT - Diseño mejorado */}
-        <div className="md:hidden">
+        <div className="md:hidden px-4 sm:px-6 md:px-12">
           <div className="flex flex-col items-center gap-4">
             {/* Imagen arriba */}
             <motion.div
@@ -49,7 +49,7 @@ export default function Hero({ imageA, imageB }: HeroProps) {
         </div>
 
         {/* TABLET LAYOUT - Transición */}
-        <div className="hidden md:hidden lg:hidden">
+        <div className="hidden md:hidden lg:hidden px-4 sm:px-6 md:px-12">
           <h1 className="uppercase font-neue tracking-tight leading-[0.88]">
             <div className="text-[16vw] whitespace-nowrap">PERRYMAN</div>
             <div className="text-[16vw] whitespace-nowrap">STUDIO</div>
@@ -78,13 +78,16 @@ export default function Hero({ imageA, imageB }: HeroProps) {
         </div>
 
         {/* DESKTOP LAYOUT - Versión original */}
-        <h1 className="hidden lg:block uppercase font-neue tracking-tight leading-[0.92]">
-          {/* ROW 1: PERRYMAN + imageA */}
-          <div className="flex items-center gap-40">
-            <span className="text-[8.4vw] whitespace-nowrap flex-shrink-0">
-              PERRYMAN
+        <h1 className="hidden lg:block uppercase font-neue tracking-tight leading-[0.92] px-4 sm:px-6 md:px-12">
+          {/* ROW 1: WHERE CREATIVITY */}
+          <div className="flex">
+            <span className="text-[10vw] whitespace-nowrap">
+              WHERE CREATIVITY
             </span>
+          </div>
 
+          {/* ROW 2: imageA + HAS NO */}
+          <div className="flex items-center gap-20 justify-center">
             <motion.span
               className="relative shrink-0 w-[100px] h-[120px]"
               animate={
@@ -105,15 +108,18 @@ export default function Hero({ imageA, imageB }: HeroProps) {
                 priority
               />
             </motion.span>
+
+            <span className="text-[10vw] whitespace-nowrap flex-shrink-0">
+              HAS NO
+            </span>
           </div>
 
-          {/* ROW 2: STUDIO (centered) */}
-          <div className="flex justify-center">
-            <span className="text-[8.4vw] whitespace-nowrap">STUDIO</span>
-          </div>
+          {/* ROW 3: BOUNDARIES + imageB */}
+          <div className="flex items-center gap-20 justify-start">
+            <span className="text-[10vw] whitespace-nowrap flex-shrink-0">
+              BOUNDARIES
+            </span>
 
-          {/* ROW 3: imageB + CREATIVE (centered) */}
-          <div className="flex items-center gap-20 justify-center">
             <motion.span
               className="relative shrink-0 w-[400px] h-[120px]"
               animate={
@@ -134,15 +140,6 @@ export default function Hero({ imageA, imageB }: HeroProps) {
                 className="object-contain"
               />
             </motion.span>
-
-            <span className="text-[8.4vw] whitespace-nowrap flex-shrink-0">
-              CREATIVE
-            </span>
-          </div>
-
-          {/* ROW 4: AGENCY (left-aligned) */}
-          <div className="flex">
-            <span className="text-[8.4vw] whitespace-nowrap">AGENCY</span>
           </div>
         </h1>
       </div>

@@ -1,15 +1,24 @@
+import { FaInstagram, FaLinkedinIn, FaSpotify, FaTiktok } from "react-icons/fa";
+import { HeroReveal } from "./components/general/HeroReveal";
 import { About } from "./components/home/About";
 import { CenteredBanner } from "./components/home/CenteredBanner";
 import { FullWidthMedia } from "./components/home/FullWidthMedia";
 import { Hero } from "./components/home/Hero";
+import { IntroCopySection } from "./components/home/IntroCopySection";
 import { Process } from "./components/home/Process";
 import { ServiceCategoryTitle } from "./components/home/ServiceCategoryTitle";
 import { ServicesAccordion } from "./components/home/ServicesAccordion";
 import { ServicesTitle } from "./components/home/ServicesTitle";
+import StackScrollSlider, {
+  StackCard,
+} from "./components/home/StackScrollSlider/StackScrollSlider";
 import { StatementHero } from "./components/home/StatementHero";
+import { Information } from "./sections/Footer/components/Information";
+import SocialIcon from "./sections/Footer/components/Information/components/SocialIcon/SocialIcon";
 import { ImageCarousel } from "./sections/ImageCarousel";
 import { Projects } from "./sections/Projects";
 import { Services } from "./sections/Services";
+import Image from "next/image";
 
 const images = [
   {
@@ -30,25 +39,165 @@ const images = [
   },
 ];
 
+const socials = {
+  instagram: "https://instagram.com/tuperfil",
+  tiktok: "https://tiktok.com/@tuperfil",
+  spotify: "https://open.spotify.com/user/tuusuario",
+  linkedin: "https://linkedin.com/in/tuusuario",
+};
+
+const cards: StackCard[] = [
+  {
+    title: "CREATIVIDAD",
+    theme: "orange",
+    overlay: false,
+  },
+  {
+    title: "INOVACIÓN",
+    theme: "dark",
+    overlay: true,
+  },
+  {
+    title: "INTENCIÓN",
+    theme: "orange",
+    overlay: true,
+  },
+  {
+    title: "ESTRATEGIAS",
+    theme: "dark",
+    overlay: true,
+  },
+];
+const cards2: StackCard[] = [
+  {
+    title: "CREATIVIDAD",
+    theme: "orange",
+    overlay: false,
+    content: (
+      <section className="w-full ">
+        <div className="mx-auto w-full max-w-7xl px-6 md:px-10 py-14 md:py-20">
+          {/* TITULOS ARRIBA */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+            {/* LEFT TITLE */}
+            <div className="md:col-span-6">
+              <h2 className="font-neue uppercase tracking-[-0.03em] leading-[0.85] text-beige text-[18vw] sm:text-[12vw] md:text-[90px] lg:text-[100px]">
+                THE FOUNDER
+              </h2>
+            </div>
+
+            {/* RIGHT TITLE */}
+            <div className="md:col-span-6 md:text-right">
+              <h2 className="font-neue uppercase tracking-[-0.03em] leading-[0.85] text-beige text-[18vw] sm:text-[12vw] md:text-[90px] lg:text-[100px]">
+                DANIELLE PERRYMAN
+              </h2>
+            </div>
+          </div>
+
+          {/* CONTENT ABAJO */}
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-12 gap-10 items-start">
+            {/* IMAGE UNDER LEFT */}
+            <div className="md:col-span-6">
+              <div className="relative w-full overflow-hidden rounded-[32px] bg-zinc-200 aspect-[4/3]">
+                <Image
+                  src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1800&q=80"
+                  alt="Team celebrating"
+                  fill
+                  className="object-cover grayscale"
+                  priority
+                />
+              </div>
+            </div>
+
+            {/* PARAGRAPH UNDER RIGHT */}
+            <div className="md:col-span-6 md:text-right">
+              <p className="mt-2 text-sm sm:text-base leading-relaxed text-white/80 max-w-md md:ml-auto">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab,
+                consectetur. Necessitatibus, tempore? Aspernatur voluptatibus,
+                iure dolorum doloribus illum aliquam ipsum harum, obcaecati ad
+                mollitia ea nam placeat tempore eaque ullam.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    ),
+  },
+];
+
 export default function Home() {
   return (
     <main className="relative flex flex-col max-w-8xl mx-auto px-6 lg:px-8 bg-beige">
+      <HeroReveal />
+      <About />
+
+      <StackScrollSlider cards={cards} />
+
       <Hero imageA="/images/home/cherry.png" imageB="/images/home/cherry.png" />
-      <FullWidthMedia
+      <IntroCopySection
+        leftTop={
+          <>
+            Enfocamos nuestro trabajo en una gestión estratégica, cercana y
+            personalizada, donde cada colaboración cuenta una historia y cada
+            talento se desarrolla bajo una dirección clara, profesional y
+            sostenible.
+          </>
+        }
+        leftBottom={
+          <>
+            Acompañamos a creadores en el crecimiento de sus carreras y apoyamos
+            a marcas en la creación de estrategias digitales coherentes,
+            relevantes y con impacto real.
+          </>
+        }
+        right={
+          <>
+            Nacimos con la visión de elevar la industria creativa
+            latinoamericana y conectar su talento con oportunidades globales.
+          </>
+        }
+      />
+      <div className="px-6 md:px-12 py-8 md:py-10">
+        <div className="grid grid-cols-4 items-center gap-8 md:gap-12">
+          <SocialIcon
+            href={socials.linkedin}
+            label="LinkedIn"
+            icon={<FaLinkedinIn />}
+            color="text-brown"
+          />
+          <SocialIcon
+            href={socials.instagram}
+            label="Instagram"
+            icon={<FaInstagram />}
+            color="text-brown"
+          />
+          <SocialIcon
+            href={socials.tiktok}
+            label="TikTok"
+            icon={<FaTiktok />}
+            color="text-brown"
+          />
+          <SocialIcon
+            href={socials.spotify}
+            label="Spotify"
+            icon={<FaSpotify />}
+            color="text-brown"
+          />
+        </div>
+      </div>
+      {/* <FullWidthMedia
         type="image"
         src="/images/home/test.webp"
         alt="Studio"
         heightClassName="h-[50vh] md:h-[95vh]"
         priority
-      />
-      <About />
-      <FullWidthMedia
+      /> */}
+      {/* <FullWidthMedia
         type="image"
         src="/images/home/postit.png"
         alt="Studio"
         heightClassName="h-[50vh] md:h-[100vh]"
         priority
-      />
+      /> */}
       <CenteredBanner text="Where creativity has no boundaries" />
       <ServicesTitle />
       <ServiceCategoryTitle title="For Brands" />
@@ -124,6 +273,7 @@ export default function Home() {
       />
       <ImageCarousel images={images} loop height={400} gap={24} radius="5px" />
       <ServiceCategoryTitle title="Projects" />
+      <StackScrollSlider cards={cards2} />
 
       <Projects />
     </main>

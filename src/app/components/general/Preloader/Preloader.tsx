@@ -8,12 +8,14 @@ type PreloaderProps = {
   logoSrc: string | StaticImageData;
   bgColor?: string;
   totalMs?: number;
+  onComplete?: () => void;
 };
 
 export default function Preloader({
   logoSrc,
   bgColor = "#1f7f2f",
   totalMs = 3600,
+  onComplete,
 }: PreloaderProps) {
   const reduceMotion = useReducedMotion();
   const [done, setDone] = useState(false);
@@ -24,13 +26,14 @@ export default function Preloader({
     const t = window.setTimeout(() => {
       setDone(true);
       document.body.style.overflow = "";
-    }, totalMs + 500); // Añado 800ms para que la imagen se quede en el centro antes de desaparecer
+      onComplete?.();
+    }, totalMs + 500);
 
     return () => {
       window.clearTimeout(t);
       document.body.style.overflow = "";
     };
-  }, [totalMs]);
+  }, [totalMs, onComplete]);
 
   if (reduceMotion) return null;
 
